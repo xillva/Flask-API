@@ -3,8 +3,12 @@ from flask import Flask, request
 from flasgger import Swagger
 import numpy as np
 import pandas as pd
+import os
 
-with open("Flask_Deployment/rf.pkl", "rb") as model:
+path = os.path.realpath(os.path.dirname(__file__))
+path = path.replace("\\", "/")
+
+with open(path + "/rf.pkl", "rb") as model:
     model = pk.load(model)
     
 app = Flask(__name__)
